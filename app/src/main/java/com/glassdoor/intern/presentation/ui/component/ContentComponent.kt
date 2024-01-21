@@ -186,7 +186,7 @@ private fun ContentComponentPreview(
 private fun HeaderComponentPreview(
     @PreviewParameter(HeaderComponentPreviewParameterProvider::class) header: HeaderUiModel
 ) = InternTheme {
-    HeaderComponent(header = header)
+    HeaderComponent(header)
 }
 
 

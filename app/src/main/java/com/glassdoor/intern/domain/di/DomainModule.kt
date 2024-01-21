@@ -19,8 +19,9 @@ import dagger.hilt.components.SingletonComponent
 /**
  * DONE: Determine the [appropriate annotation](https://developer.android.com/codelabs/android-hilt#6) and provide the most optimal [scope component](https://developer.android.com/training/dependency-injection/hilt-android#generated-components)
  */
-@InstallIn(SingletonComponent::class)
+
 @Module
+@InstallIn(SingletonComponent::class)
 internal object DomainModule {
 
     @Provides

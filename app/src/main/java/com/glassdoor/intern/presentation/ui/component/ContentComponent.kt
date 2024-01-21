@@ -69,10 +69,12 @@ internal fun ContentComponent(
         verticalArrangement = Arrangement.spacedBy(InternTheme.dimensions.double),
     ) {
         /**
-         * TODO: Specify the [item key](https://developer.android.com/jetpack/compose/lists#item-keys) and [content type](https://developer.android.com/jetpack/compose/lists#content-type)
+         * DONE: Specify the [item key](https://developer.android.com/jetpack/compose/lists#item-keys) and [content type](https://developer.android.com/jetpack/compose/lists#content-type)
          */
         items(
             items = items,
+            key = {item -> item.key},
+            contentType = {items},
             itemContent = { item -> ItemComponent(item) },
         )
     }
@@ -97,8 +99,26 @@ private fun HeaderComponent(
     ) {
         with(header) {
             /**
-             * TODO: [Declare the UI](https://developer.android.com/codelabs/jetpack-compose-basics#5) based on the UI model structure
+             * DONE: [Declare the UI](https://developer.android.com/codelabs/jetpack-compose-basics#5) based on the UI model structure
              */
+            Column(
+                modifier = Modifier.padding(InternTheme.dimensions.double),
+                verticalArrangement = Arrangement.spacedBy(InternTheme.dimensions.normal),
+            ) {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.titleLarge
+                )
+                Text(
+                    text = description,
+                    style = MaterialTheme.typography.bodySmall
+                )
+                Text(
+                    text = timestamp,
+                    style = MaterialTheme.typography.labelSmall
+                )
+            }
+
         }
     }
 }
@@ -142,7 +162,7 @@ private fun ItemComponent(item: ItemUiModel) = Card {
                 contentDescription = title,
                 contentScale = ContentScale.Crop,
                 error = rememberVectorPainter(Icons.Default.Warning),
-                model = TODO("[Request an image download](https://github.com/coil-kt/coil#requests)"),
+                model = imageUrl  //DONE("[Request an image download](https://github.com/coil-kt/coil#requests)"),
             )
         }
     }
@@ -182,12 +202,40 @@ private typealias HeaderAndItems = Pair<HeaderUiModel, List<ItemUiModel>>
 
 private class ContentComponentPreviewParameterProvider :
     PreviewParameterProvider<HeaderAndItems> by previewParameterProviderOf(
-        TODO("Define UI models for preview purposes")
+        //DONE("Define UI models for preview purposes")
+        HeaderAndItems(
+            HeaderUiModel(
+                title = "Header Title",
+                description = "Header Description",
+                timestamp = "8:00",
+            ),
+            listOf(
+                ItemUiModel(
+                    title = "Item Title 0",
+                    description = "Item Description 0",
+                    imageUrl = null,
+                    timestamp = "10:00",
+
+                ),
+                ItemUiModel(
+                    title = "Item Title 1",
+                    description = "Item Description 1",
+                    imageUrl = null,
+                    timestamp = "11:00",
+                )
+            )
+        )
+
     )
 
 private class HeaderComponentPreviewParameterProvider :
     PreviewParameterProvider<HeaderUiModel> by previewParameterProviderOf(
-        TODO("Define UI models for preview purposes")
+        //DONE("Define UI models for preview purposes")
+        HeaderUiModel(
+            title = "Header Title",
+            description = "Header Description",
+            timestamp = "7:00"
+        )
     )
 
 private class ItemComponentPreviewParameterProvider :

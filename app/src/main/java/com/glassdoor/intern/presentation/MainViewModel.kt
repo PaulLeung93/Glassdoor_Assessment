@@ -94,15 +94,29 @@ internal class MainViewModel @Inject constructor(
         RefreshScreen -> onRefreshScreen()
     }
 
+    /**
+    //Takes in two arguments previousUiState and partialState
+    //Returns MainUiState
+    //when has conditions based on partialState, remaining HideLoadingState or ShowLoadingState
+    //Need to separate handling for these two cases
+    */
     private fun updateUiState(
         previousUiState: MainUiState,
         partialState: PartialState,
     ): MainUiState = when (partialState) {
-        HideLoadingState, ShowLoadingState -> {
-            /**
-             * TODO: Separate handling and update correct properties [previousUiState]
-             */
-            previousUiState
+
+        //DONE: Separate handling and update correct properties [previousUiState]
+
+        HideLoadingState -> with(partialState) {
+            previousUiState.copy(
+                isLoading = false
+            )
+        }
+
+        is ShowLoadingState -> with(partialState) {
+            previousUiState.copy(
+                isLoading = true
+            )
         }
 
         is UpdateErrorMessageState -> with(partialState) {

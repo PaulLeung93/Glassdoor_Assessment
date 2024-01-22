@@ -37,13 +37,10 @@ internal object CoroutineModule {
     /**
      * DONE: Annotate dependency with the correct [qualifier label](https://developer.android.com/training/dependency-injection/hilt-android#multiple-bindings)
      */
-    @Qualifier
-    @Retention(AnnotationRetention.BINARY)
-    annotation class DefaultCoroutineContext
 
     @Singleton
     @Provides
-    @DefaultCoroutineContext
+    @Coroutines.Context.Default
     fun provideCoroutineContextDefault(
         coroutineContextFactory: CoroutineContextFactory
     ): CoroutineContext =

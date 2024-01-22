@@ -74,7 +74,7 @@ For each correctly completed instruction, **1 point** is awarded, which must the
 
 #### Bonus points
 
-- [ ] The application does not crash
+- [X] The application does not crash
 - [ ] The previously loaded list remains on the screen after the error appears
 - [X] All fulfilled `TODO` instructions remain in place, and the prefix is replaced with the word `DONE`
 - [X] The project's change history has the [conventional commit messages](https://www.conventionalcommits.org/en/v1.0.0)
